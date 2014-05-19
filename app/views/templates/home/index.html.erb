@@ -1,1 +1,13 @@
-hall
+<div ng-if="!user">
+
+</div>
+<div ng-if="user != false">
+  <p>Xin Chào Bạn</p>
+  <div>
+    <input ng-model="todo"  />
+    <button ng-click="addTodoList(todo)">Add Todo List</button>
+  </div>
+  <ul data-ng-init="lists">
+    <li class="todo_is_{{todo.status}}" ng-repeat="todo in lists"><input type="checkbox" ng-change="updateTodoList(todo.id, todo.status)" ng-model="status" ng-checked="{{todo.status}}"/>{{todo.title}} <a href="/#/" ng-click="deleteTodoList(todo.id)">Delete</a></li>
+  </ul>
+</div>

@@ -1,4 +1,4 @@
-var todoapp = angular.module('todoapp', ['ngResource','ngRoute']);
+var todoapp = angular.module('todoapp', ['ngResource','ngRoute','ngCookies']);
 
 todoapp.config(['$routeProvider','$locationProvider','$httpProvider',function($routeProvider, $locationProvider,$httpProvider) {
     $routeProvider

@@ -17,6 +17,16 @@ module TODOAPP
         present todolist
         status 200
       end
+      params do
+        requires :id, type: Integer
+        requires :status, type: Boolean
+      end
+
+      put '/' do
+        todolist = TodoList.find(params[:id]).update_attributes(:status => params[:status])
+        present todolist
+        status 200
+      end
 
       desc "Get List by User"
       params do
@@ -24,6 +34,16 @@ module TODOAPP
       end
       get '/' do
         lists = TodoList.where(user_id: params[:user_id])
+        present lists
+        status 200
+      end
+
+      desc "Delete List"
+      params do
+        requires :id, type: String
+      end
+      get '/delete' do
+        lists = TodoList.find(params[:id]).destroy
         present lists
         status 200
       end
